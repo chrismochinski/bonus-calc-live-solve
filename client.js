@@ -40,4 +40,31 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-console.log( employees );
+// console.log( employees );
+
+console.table(employees);
+
+// 1 - loop over information
+
+for(let employee of employees){
+  // console.log(employee);
+  let employeeOutput = processEmployeeBonuses(employee);
+  console.log(employeeOutput);
+}
+// 2 - create a function that takes in an object and returns an object
+/**
+ * 
+ * @param {object} employeeInput Employees to process
+ *@return {object} Object within bonus information
+ * 
+ */
+
+
+function processEmployeeBonuses(employeeInput){
+  employeeInput.bonusPercentage = 200;
+  return employeeInput;
+}
+
+// 3 - calculate the bonus
+// 4 - move that calculation into a separate function
+// 5 - write some tests
