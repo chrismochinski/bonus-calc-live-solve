@@ -14,7 +14,7 @@ const employees = [
   {
     name: 'Scout',
     employeeNumber: '6243',
-    annualSalary: '74750',
+    annualSalary: '74751',
     reviewRating: 5
   },
   {
@@ -62,8 +62,42 @@ for(let employee of employees){
 
 function processEmployeeBonuses(employeeInput){
   employeeInput.bonusPercentage = 200;
+  if(employeeInput.reviewRating <= 2) {
+    employeeInput.bonusPercentage = 0;
+  }
+  else if(employeeInput.reviewRating === 3) {
+    employeeInput.bonusPercentage = employeeInput.annualSalary * 0.04;
+  }
+  else if(employeeInput.reviewRating === 4) {
+    employeeInput.bonusPercentage = employeeInput.annualSalary * 0.06;
+  }
+  else if(employeeInput.reviewRating === 5) {
+    employeeInput.bonusPercentage = employeeInput.annualSalary * 0.1;
+  }
+  else{
+    //do nothing
+  }
+  // now we do the employee number 4 dig condition...4 dig number = 15 + years
+if(employeeInput.employeeNumber.length === 4){
+  employeeInput.bonusPercentage += 0.05;
+}
+if(employeeInput.salary > parseInt(65000)){
+  employeeInput.bonusPercentage -= 0.01;
+}
+if(employeeInput.bonusPercentage < 0){
+  employeeInput.bonusPercentage = 0;
+}
+else if(employeeInput.bonusPercentage > 0.13){
+  employeeInput.bonusPercentage = 0.13;
+}
+employeeInput.totalBonus = employeeInput.annualSalary * employeeInput.bonusPercentage;
+employeeInput.totalBonus = employeeInput.totalBonus.toFixed(2); //or zero to keep accounting team happy
+  employeeInput.totalCompensation = employeeInput.salary + employeeInput.totalBonus;
   return employeeInput;
 }
+
+// > < * / - ...these will do math and convert to string
+// + will math BUT ALSO CONCAT...so strings will string
 
 // 3 - calculate the bonus
 // 4 - move that calculation into a separate function
