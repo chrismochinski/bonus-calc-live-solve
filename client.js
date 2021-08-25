@@ -54,12 +54,9 @@ for (let employee of employees) {
 // 2 - create a function that takes in an object and returns an object
 /**
  * 
- * @param {object} employeeInput Employees to process
- *@return {object} Object within bonus information
- * 
+ * @param {object} employeeInput Employee to process
+ * @return {object} Object within bonus information
  */
-
-
 function processEmployeeBonuses(employeeInput) {
   employeeInput.bonusPercentage = 0;
   const salary = parseInt(employeeInput.annualSalary);
@@ -85,18 +82,45 @@ function processEmployeeBonuses(employeeInput) {
   if (salary > 65000) {
     employeeInput.bonusPercentage -= 0.01;
   }
+  // checkig if value is in range 0 - 0.13
   if (employeeInput.bonusPercentage < 0) {
     employeeInput.bonusPercentage = 0;
   }
   else if (employeeInput.bonusPercentage > 0.13) {
     employeeInput.bonusPercentage = 0.13;
   }
+  //finish that test 
+
+  //calculating total bonus compensation
   employeeInput.totalBonus = salary * 
                             employeeInput.bonusPercentage;
-  employeeInput.totalBonus = employeeInput.totalBonus.toFixed(0); //or zero to keep accounting team happy
-  employeeInput.totalCompensation = salary + parseInt(employeeInput.totalBonus);
+  employeeInput.totalBonus = employeeInput.totalBonus.toFixed(0); //or zero to keep accounting team happy and if we keep tying it's weird that ther eis no gray bar cu there used to be a gray bar what the heck happened to the gray bar this is werid i cant believe I'm still typing this would be a good time for power mode dang it well whatever I guess no gray bar after all unless it's coming now is it nope alright i'm done then fine bye
+  employeeInput.totalCompensation = 
+                        salary + parseInt(employeeInput.totalBonus);
   return employeeInput;
 }
+/**
+ * 
+ * @param {string} employeeNumber 
+ * @param {string} annualSalary 
+ * @param {number} rating 
+ * @returns {number} bonus percentage 
+ * 
+ * 
+ */
+
+//this stuff could clean up...
+
+// function calculateBonusPercent(employeeNumber, salary, rating){
+//   // function to return bonus percent
+//   let bonusPercentage = 0;
+
+//   return bonusPercentage;
+// }
+
+// function checkBonusRange(){
+
+// }
 
 // > < * / - ...these will do math and convert to string
 // + will math BUT ALSO CONCAT...so strings will string
