@@ -4,7 +4,7 @@ const employees = [
     employeeNumber: '2405',
     annualSalary: '47000',
     reviewRating: 3
-  },  
+  },
   {
     name: 'Jem',
     employeeNumber: '62347',
@@ -46,7 +46,7 @@ console.table(employees);
 
 // 1 - loop over information
 
-for(let employee of employees){
+for (let employee of employees) {
   // console.log(employee);
   let employeeOutput = processEmployeeBonuses(employee);
   console.log(employeeOutput);
@@ -60,39 +60,41 @@ for(let employee of employees){
  */
 
 
-function processEmployeeBonuses(employeeInput){
-  employeeInput.bonusPercentage = 200;
-  if(employeeInput.reviewRating <= 2) {
+function processEmployeeBonuses(employeeInput) {
+  employeeInput.bonusPercentage = 0;
+  const salary = parseInt(employeeInput.annualSalary);
+  if (employeeInput.reviewRating <= 2) {
     employeeInput.bonusPercentage = 0;
   }
-  else if(employeeInput.reviewRating === 3) {
-    employeeInput.bonusPercentage = employeeInput.annualSalary * 0.04;
+  else if (employeeInput.reviewRating === 3) {
+    employeeInput.bonusPercentage = 0.04;
   }
-  else if(employeeInput.reviewRating === 4) {
-    employeeInput.bonusPercentage = employeeInput.annualSalary * 0.06;
+  else if (employeeInput.reviewRating === 4) {
+    employeeInput.bonusPercentage = 0.06;
   }
-  else if(employeeInput.reviewRating === 5) {
-    employeeInput.bonusPercentage = employeeInput.annualSalary * 0.1;
+  else if (employeeInput.reviewRating === 5) {
+    employeeInput.bonusPercentage = 0.1;
   }
-  else{
+  else {
     //do nothing
   }
   // now we do the employee number 4 dig condition...4 dig number = 15 + years
-if(employeeInput.employeeNumber.length === 4){
-  employeeInput.bonusPercentage += 0.05;
-}
-if(employeeInput.salary > parseInt(65000)){
-  employeeInput.bonusPercentage -= 0.01;
-}
-if(employeeInput.bonusPercentage < 0){
-  employeeInput.bonusPercentage = 0;
-}
-else if(employeeInput.bonusPercentage > 0.13){
-  employeeInput.bonusPercentage = 0.13;
-}
-employeeInput.totalBonus = employeeInput.annualSalary * employeeInput.bonusPercentage;
-employeeInput.totalBonus = employeeInput.totalBonus.toFixed(2); //or zero to keep accounting team happy
-  employeeInput.totalCompensation = employeeInput.salary + employeeInput.totalBonus;
+  if (employeeInput.employeeNumber.length === 4) {
+    employeeInput.bonusPercentage += 0.05;
+  }
+  if (salary > 65000) {
+    employeeInput.bonusPercentage -= 0.01;
+  }
+  if (employeeInput.bonusPercentage < 0) {
+    employeeInput.bonusPercentage = 0;
+  }
+  else if (employeeInput.bonusPercentage > 0.13) {
+    employeeInput.bonusPercentage = 0.13;
+  }
+  employeeInput.totalBonus = salary * 
+                            employeeInput.bonusPercentage;
+  employeeInput.totalBonus = employeeInput.totalBonus.toFixed(0); //or zero to keep accounting team happy
+  employeeInput.totalCompensation = salary + parseInt(employeeInput.totalBonus);
   return employeeInput;
 }
 
